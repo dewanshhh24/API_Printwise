@@ -129,7 +129,14 @@ if __name__ == "__main__":
     import uvicorn
     import os
 
+
+
     # Use the port provided by Render, or default to 8000 for local testing
     port = int(os.environ.get("PORT", 8000))
     print(f"Starting server on host 0.0.0.0 and port {port}")
     uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)
+
+@app.get("/")
+def home():
+    return {"message": "Welcome to the FastAPI PDF Service!"}
+
